@@ -39,7 +39,7 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
   };
 
   // Kirim data ke API menggunakan Fetch
-  fetch('https://e52e-66-96-225-177.ngrok-free.app/api/kuisioner/creates', { // Ganti dengan URL API Anda
+  fetch('https://e52e-66-96-225-177.ngrok-free.app/api/kuisioner/create', { // Ganti dengan URL API Anda
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
