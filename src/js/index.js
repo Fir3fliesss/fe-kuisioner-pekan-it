@@ -10,11 +10,12 @@ window.addEventListener("load", () => {
   main.classList.add("block");
 });
 
+// Gua gak ta ngapa padahal smalem gua pake tailwind doang bisa, jadi gua pake css biasa aja
 bukaList.addEventListener("click", () => {
-  if (kelas.classList.contains("max-h-0")) {
-    kelas.classList.replace("max-h-0", "max-h-[2000px]");
+  if (kelas.style.maxHeight == "0px") {
+    kelas.style.maxHeight = `${kelas.scrollHeight}px`;
   } else {
-    kelas.classList.replace("max-h-[2000px]", "max-h-0");
+    kelas.style.maxHeight = "0px";
   }
 });
 
