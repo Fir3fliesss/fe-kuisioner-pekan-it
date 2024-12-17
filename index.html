@@ -6,6 +6,7 @@
     <title>Pekan IT Kuisoner</title>
     <link rel="stylesheet" href="./src/css/output.css" />
     <script src="./src/js/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body>
@@ -41,6 +42,7 @@
     >
       <form
         class="max-w-4xl mx-auto bg-gradient-to-br from-slate-50 to-gray-50 rounded-2xl shadow-xl overflow-hidden"
+        id="dataForm"
       >
         <div class="bg-gradient-to-r from-red-500 to-rose-700 p-6 sm:p-10">
           <h1
@@ -55,26 +57,26 @@
 
         <div class="p-3">
           <label
-            for="student-name"
+            for="nama_siswa"
             class="block text-lg font-semibold text-gray-700"
             >Nama Siswa</label
           >
           <input
             type="text"
-            id="student-name"
-            name="student-name"
+            id="nama_siswa"
+            name="nama_siswa"
             class="mt-1 text-lg block w-full rounded-md shadow-sm p-2 outline-none transition-all duration-100 focus:ring-2 focus:ring-red-400"
           />
 
           <label
-            for="parent-name"
+            for="nama_wali_siswa"
             class="block text-lg font-semibold text-gray-700"
             >Nama Wali Siswa</label
           >
           <input
             type="text"
-            id="parent-name"
-            name="parent-name"
+            id="nama_wali_siswa"
+            name="nama_wali_siswa"
             class="mt-1 text-lg block w-full rounded-md shadow-sm p-2 outline-none transition-all duration-100 focus:ring-2 focus:ring-red-400"
           />
         </div>
