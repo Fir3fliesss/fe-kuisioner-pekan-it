@@ -19,11 +19,6 @@ bukaList.addEventListener("click", () => {
   }
 });
 
-
-//API
-
-const link = "https://e52e-66-96-225-177.ngrok-free.app/";
-
 document.getElementById('dataForm').addEventListener('submit', function(event) {
   event.preventDefault(); // Mencegah reload halaman
 
@@ -40,37 +35,59 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
   };
 
   // Kirim data ke API menggunakan Fetch
-  fetch('https://e52e-66-96-225-177.ngrok-free.app/api/kuisioner/create', { // Ganti dengan URL API Anda
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-  })
-  .then(response => {
-      if (!response.ok) {
-          throw new Error('Gagal mengirim data');
-      }
-      return response.json();
-  })
-  .then(data => {
-      console.log('Data berhasil dikirim:', data);
-      Swal.fire({
+const api = 'https://be-kuesioner.synchronizeteams.my.id';
+// Add this at the top of the file
+const token = localStorage.getItem('userToken');
+const userId = localStorage.getItem('userId');
+
+if (!token || !userId) {
+    window.location.href = 'login.html';
+}
+console.log(token);
+console.log(formData);
+
+console.log('Preparing to send request to API');
+console.log('Form Data:', formData);
+console.log('Token:', token);
+
+fetch(`${api}/api/kuesioner/create`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(formData)
+})
+.then(response => {
+    console.log('Response Status:', response.status);
+    if (!response.ok) {
+        console.error('Response Error:', response);
+        throw new Error('Gagal mengirim data');
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('Data received from server:', data);
+    Swal.fire({
         position: "top-end",
         icon: "success",
         title: "Terimakasih telah mengisi kuesioner ini.",
         showConfirmButton: false,
         timer: 1500
-      });
-  })
-  .catch(error => {
-      console.error('Error:', error);
-      Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "Terdapat kesalahan, mohon coba sesaat lagi.",
-        showConfirmButton: false,
-        timer: 1500
-      });
-  });
+    }).then(() => {
+        // Redirect ke halaman antrian setelah alert
+        window.location.href = 'antrian.html';
+    });
+})
+.catch(error => {
+    console.error('Error:', error);
+    Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "Terdapat kesalahan, mohon coba sesaat lagi.",
+      showConfirmButton: false,
+      timer: 1500
+    });
+});
 });
