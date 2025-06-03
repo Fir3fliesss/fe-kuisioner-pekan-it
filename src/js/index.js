@@ -35,14 +35,18 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
   };
 
   // Kirim data ke API menggunakan Fetch
-const api = 'https://be-kuesioner.synchronizeteams.my.id';
-// Add this at the top of the file
-const token = localStorage.getItem('userToken');
-const userId = localStorage.getItem('userId');
+const  api = 'https://be-kuesioner.synchronizeteams.my.id';
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+        window.location.href = 'login.html';
+        return;
+    }
+    const userId = localStorage.getItem('userId');
 
-if (!token || !userId) {
-    window.location.href = 'login.html';
-}
+    if (!token || !userId) {
+        window.location.href = 'login.html';
+    }
 console.log(token);
 console.log(formData);
 
@@ -72,7 +76,7 @@ fetch(`${api}/api/kuesioner/create`, {
     Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Terimakasih telah mengisi kuesioner ini.",
+        title: "Terimakasih telah mengisi kuesioner ini, anda akan segera di-alihkan kehalaman nomor antrian.",
         showConfirmButton: false,
         timer: 1500
     }).then(() => {
@@ -90,4 +94,4 @@ fetch(`${api}/api/kuesioner/create`, {
       timer: 1500
     });
 });
-});
+});});

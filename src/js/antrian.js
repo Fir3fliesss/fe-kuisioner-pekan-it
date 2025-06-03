@@ -1,17 +1,14 @@
 const api = 'https://be-kuesioner.synchronizeteams.my.id';
+
 const getAntrianBtn = document.getElementById('getAntrianBtn');
 const nomorAntrianEl = document.getElementById('nomorAntrian');
 
-// Ambil data user dari local storage
-const userToken = localStorage.getItem('userToken');
-const userId = localStorage.getItem('userId'); // Changed from 'user_id' to match login.js
-
-if (!userToken || !userId) {
-    console.log('Redirect ke login karena token/userId tidak ada');
-    window.location.href = 'login.html';
-}
-
-getAntrianBtn.addEventListener('click', async () => {
+document.addEventListener('DOMContentLoaded', async() => {
+    const token = localStorage.getItem('userToken');
+    if (!token) {
+        window.location.href = '/login.html';
+        return;
+    }
     try {
         // 1. Generate queue number
         const generateResponse = await fetch(`${api}/api/antrian`, {

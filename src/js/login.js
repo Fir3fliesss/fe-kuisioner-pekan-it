@@ -44,3 +44,11 @@ async function handleLogin(nis) {
         return false;
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('userToken');
+    if (token) {
+        window.location.href = '/index.html';
+        return;
+    }
+});
