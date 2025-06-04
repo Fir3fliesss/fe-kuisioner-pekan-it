@@ -6,7 +6,7 @@ loginForm.addEventListener('submit', async (event) => {
     const nis = document.getElementById('nis').value;
     const success = await handleLogin(nis);
     if (success) {
-        window.location.href = 'index.html'; // Redirect to main page
+        window.location.href = 'kuesioner.html'; // Redirect to main page
     } else {
         alert('Login failed. Please check your NIS and try again.');
     }

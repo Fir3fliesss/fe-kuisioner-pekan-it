@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nomor Antrian</title>
     <link rel="stylesheet" href="./src/css/output.css">
+    <link href="/src/styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-50 to-gray-50 p-6">
-    <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+<body class="min-h-screen bg-gradient-to-br from-slate-50 to-gray-50 flex items-center justify-center p-6">
+    <div class="max-w-md w-full mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
         <div class="bg-gradient-to-r from-red-500 to-rose-700 p-6 sm:p-8">
             <h1 class="text-2xl sm:text-3xl font-bold text-white text-center">
                 Nomor Antrian
@@ -18,7 +20,7 @@
             </h2>
         </div>
         <div class="p-6 text-center">
-            <div id="nomorAntrian" class="text-5xl font-bold my-8 text-gray-800">-</div>
+            <div id="nomorAntrian" class="text-7xl font-bold my-8 text-gray-800">-</div>
             <button id="getAntrianBtn"
                 class="w-full bg-gradient-to-r from-red-500 to-rose-700 text-white text-lg font-semibold py-3 px-4 rounded-md hover:from-red-600 hover:to-rose-800 transition-all duration-200">
                 Dapatkan Nomor Antrian

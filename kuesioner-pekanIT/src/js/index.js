@@ -1,6 +1,6 @@
 const loading = document.getElementById("loading");
-const bukaList = document.getElementById("BukaList");
-const kelas = document.getElementById("kelas");
+// const bukaList = document.getElementById("BukaList");
+// const kelas = document.getElementById("kelas");
 const main = document.getElementById("main");
 
 window.addEventListener("load", () => {
@@ -10,23 +10,11 @@ window.addEventListener("load", () => {
   main.classList.add("block");
 });
 
-// Gua gak ta ngapa padahal smalem gua pake tailwind doang bisa, jadi gua pake css biasa aja
-bukaList.addEventListener("click", () => {
-  if (kelas.style.maxHeight == "0px") {
-    kelas.style.maxHeight = `${kelas.scrollHeight}px`;
-  } else {
-    kelas.style.maxHeight = "0px";
-  }
-});
-
 document.getElementById('dataForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // Mencegah reload halaman
+  event.preventDefault();
 
-  // Ambil nilai input dari form
   const formData = {
       nama_wali_siswa: document.getElementById('nama_wali_siswa').value,
-      nama_siswa: document.getElementById('nama_siswa').value,
-      kelas: document.querySelector('input[name="kelas"]:checked')?.value || '',
       tampilan_produk: document.querySelector('input[name="tampilan_produk"]:checked')?.value || '',
       tampilan_stand: document.querySelector('input[name="tampilan_stand"]:checked')?.value || '',
       penjelasan_produk: document.querySelector('input[name="penjelasan_produk"]:checked')?.value || '',
@@ -64,9 +52,7 @@ fetch(`${api}/api/kuesioner/create`, {
     body: JSON.stringify(formData)
 })
 .then(response => {
-    console.log('Response Status:', response.status);
     if (!response.ok) {
-        console.error('Response Error:', response);
         throw new Error('Gagal mengirim data');
     }
     return response.json();
@@ -86,12 +72,7 @@ fetch(`${api}/api/kuesioner/create`, {
 })
 .catch(error => {
     console.error('Error:', error);
-    Swal.fire({
-      position: "top-end",
-      icon: "error",
-      title: "Terdapat kesalahan, mohon coba sesaat lagi.",
-      showConfirmButton: false,
-      timer: 1500
-    });
+    // Tetap redirect meski error atau tampilkan pesan
+    window.location.href = 'antrian.html';
 });
 });});
